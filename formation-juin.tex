@@ -1,0 +1,899 @@
+\documentclass[11pt]{article}
+\usepackage{mon_paquet}
+
+\usepackage{marvosym}
+\usepackage{mon_paquet}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+\usepackage{comment}
+
+\RequirePackage[left=1cm,right=1cm,top=1cm,bottom=1cm,noheadfoot]{geometry}
+\RequirePackage{fancyhdr}\pagestyle{fancy}
+\lhead{Formation Python}\rhead{Année Scolaire 2018-2019}\lfoot{}\rfoot{\LaTeXe{}}
+\renewcommand\headrulewidth{0pt}%ligne en dessous de l'en tête
+
+
+%graphes, physique-chimie
+%\usepackage{pst-osci}\usepackage{pst-diffraction}\usepackage{pst-circ}\usepackage{pst-dosage}\usepackage{pst-labo}\usepackage{pst-optic}\usepackage{pst-spectra,pstricks-add}\usepackage[pictex]{m-ch-en}\usepackage{m-pictex,m-ch-en}
+%\usepackage{psfrag}\usepackage{color,colortbl}\usepackage[table]{xcolor}\usepackage{graphicx}\usepackage[usenames,dvipsnames]{pstricks}\usepackage{epsfig}\usepackage{pst-grad}\usepackage{pst-plot}
+
+%mise en page, multicolonnage, paysage, tableaux maths
+%\usepackage{array}\usepackage{multirow}\usepackage{lscape}\usepackage{multido}
+
+%paquets divers, maths, encadrement, symboles, cursif, qcm,lettrine,ombrage
+%\usepackage{lettrine}\usepackage{eurosym}\usepackage{amsmath,amssymb,mathrsfs}\usepackage{esvect}\usepackage{esdiff}\usepackage{cancel}\usepackage{fancybox}\usepackage{shadow}\usepackage{pifont}\usepackage{fourier-orns}\usepackage{frcursive}\usepackage{bm}\usepackage{alterqcm}\usepackage{pstricks,pst-3d}(pour les ombres)\usepackage{enumitem}
+%\renewcommand\thesection{\Roman{section}}
+\usepackage{hyperref}\usepackage{esvect}\usepackage{bm}
+\title{Formation Juin 2019 :\\Python pour l'enseignant de Physique-Chimie au lycée}\author{}\date{}
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+
+
+
+
+
+% Commandes de base
+\newcommand{\from}[0]{\textcolor{orange}{from }}
+\newcommand{\import}[0]{\textcolor{orange}{import }}
+\newcommand{\for}[0]{\textcolor{orange}{for }}
+\newcommand{\while}[0]{\textcolor{orange}{while }}
+\newcommand{\dans}[0]{\textcolor{orange}{in }}
+\newcommand{\si}[0]{\textcolor{orange}{if }}
+\newcommand{\sinon}[0]{\textcolor{orange}{else }}
+\newcommand{\True}[0]{\textcolor{orange}{True }}
+\newcommand{\False}[0]{\textcolor{orange}{False }}
+\renewcommand{\si}[0]{\textcolor{orange}{if }}
+\renewcommand{\sinon}[0]{\textcolor{orange}{else }}
+\newcommand{\et}[0]{\textcolor{orange}{and }}
+\newcommand{\ou}[0]{\textcolor{orange}{or }}
+\newcommand{\as}[0]{\textcolor{orange}{as }}
+\newcommand{\defi}[0]{\textcolor{orange}{def }}
+\newcommand{\return}[0]{\textcolor{orange}{return }}
+
+
+\newcommand{\range}[0]{\textcolor{violet}{range}}
+\newcommand{\chev}[0]{\textcolor{violet}{\scriptsize $\bm{>>>}$ }}
+\newcommand{\print}[0]{\textcolor{violet}{print}}
+\newcommand{\type}[0]{\textcolor{violet}{type}}
+\newcommand{\dir}[0]{\textcolor{violet}{dir}}
+\newcommand{\len}[0]{\textcolor{violet}{len}}
+\renewcommand{\input}[0]{\textcolor{violet}{input}}
+\newcommand{\float}[0]{\textcolor{violet}{float}}
+%\renewcommand{\int}[0]{\textcolor{violet}{int}}
+\newcommand{\abs}[0]{\textcolor{violet}{abs}}
+
+\newcommand{\tab}[0]{\qquad \quad\,\, }
+\newcommand{\tabis}[0]{\quad\, }
+
+
+\newcommand{\str}[1]{\textcolor{green}{#1}}
+
+\renewcommand{\com}[1]{\textcolor{red}{#1}}
+
+%Environnement Python : 
+ \newenvironment{python}[1]{\begin{center}\begin{normalsize}\begin{sffamily}
+ \begin{minipage}{#1\textwidth}%
+\hrulefill~\raisebox{-0.8ex}{{\Large \textcolor{red}{\Keyboard}} \quad\textcolor{red}{\textit{\textsf{code Python}}}\quad {\Large\textcolor{red}{\Keyboard}}}~\hrulefill\par}%
+{\par\hrulefill \end{minipage}
+\end{sffamily}\end{normalsize}\end{center}}
+
+
+
+
+%Environnement correction Python : 
+ \newenvironment{correc}[1]{\begin{center}\begin{normalsize}\begin{sffamily}
+ \begin{minipage}{#1\textwidth}%
+\hrulefill~\raisebox{-0.8ex}{{\Large \textcolor{red}{\Keyboard}} \quad\textcolor{red}{\textit{\textsf{\textsc{une correction possible}}}}\quad {\Large\textcolor{red}{\Keyboard}}}~\hrulefill\par}%
+{\par\hrulefill \end{minipage}
+\end{sffamily}\end{normalsize}\end{center}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Autres : quasi pas utilisé depuis l'environnement Python
+\newcommand{\ora}[1]{\textcolor{orange}{\texttt{#1}}}
+\newcommand{\vio}[1]{\textcolor{violet}{\texttt{#1}}}
+\newcommand{\rou}[1]{\textcolor{red}{\texttt{#1}}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\vspace{-2cm}
+
+\tableofcontents
+
+\medskip
+
+\begin{itemize}
+
+\item \textit{Le lien vers cet énoncé en ligne est ici ; téléchargez-le (lien \texttt{Download} en haut du document) et utilisez-le pour accéder aux liens cliquables de l'énoncé : }
+
+\begin{center}
+%\underline{\url{https://github.com/formationPythonPC/Enonce-Formation/blob/master/formation.pdf}                                                                                                  }
+œ\end{center}
+
+\medskip
+
+\item Tous \underline{les liens soulignés} du présent énoncé sont cliquables et permettent d'accéder aux tutoriels, à des fichiers aides ou aux fichiers corrections.
+
+\item \textit{Vous aurez auprès de vous les documents mis à disposition sur le site académique et en premier lieu : }
+\begin{itemize}
+ \item \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-trace_de_graphe.pdf}{\underline{\texttt{Tracés de graphes avec Python}}} signalé dans ce poly par: \textsc{vademecum}
+ \item \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-tutoriel.pdf}{\underline{\texttt{Tutoriel pour Python}}} signalé dans ce poly par: \textsc{tutoriel}
+\end{itemize}
+
+\medskip
+\item \textit{Vous traitez les exercices dans l'ordre (difficulté croissante).}
+
+\medskip
+\item \textit{Pour chaque grande partie, vous créerez un fichier (stipulé dans l'énoncé).}
+
+\medskip
+\item \textit{Chaque partie peut se traiter selon 3 niveaux de difficulté :} 
+
+\begin{itemize}
+ \item \textbf{niveau 1} : on suit les questions dans l'ordre, en s'aidant ponctuellement des tutoriels et sans copier les codes proposés.
+ \item \textbf{niveau 2} : dès le début de chaque exercice, des aides à la résolution sous forme de morceaux de code sont données ; on copie-colle ces codes dans les programmes et on les complète pour répondre aux questions posées
+ \item \textbf{niveau 3} : on utilise les corrections données en fin de chaque partie. Le travail alors et de \textbf{commenter} les différentes lignes du programme, c'est à dire d'expliquer à quoi sert chaque ligne.
+ 
+ \textsc{rappels : }
+ \begin{itemize}
+  \item les commentaires sont des éléments du programme qui ne sont pas lus par Python, mais qui sont présents pour aider l'utilisateur du programme
+  \item les commentaires sur une ligne sont introduits par \# (apparaissent en rouge sous IDLE)
+  \item les commentaires sur plusieurs lignes sont introduits et terminés par un triple guillemet : \textbf{"""} (apparaissent en vert sous IDLE)
+ \end{itemize}
+ 
+\end{itemize}
+
+
+\medskip
+\item À chacun de choisir son niveau de difficulté ; conseil : 
+
+\begin{itemize}
+ \item Par défaut, commencez par le niveau 2, c'est ainsi que l'énoncé est rédigé. 
+ 
+ Si vous vous sentez à l'aise, vous pouvez tenter de réaliser les exercices sans les aides (niveau 1).
+ 
+ Si vous avez des difficultés, passez au niveau 3.
+\end{itemize}
+
+
+\smallskip
+\item \textit{Enfin, et même si cela n'est pas précisé, pensez à compiler votre code régulièrement pour vérifier si vous répondez bien aux questions.}
+
+\end{itemize}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\newpage
+
+\section{Algorithmie et Chimie, exercice 1}
+
+
+\fbox{\begin{minipage}[c]{0.8\textwidth}
+
+\textit{Au programme de Première (Spécialité) : Déterminer la composition de
+l’état final d’un système siège d’une transformation
+chimique totale à l’aide d’un langage de programmation.}
+\end{minipage}}
+
+
+
+\bigskip
+
+
+On considère la réaction totale entre l’hydrogène sulfureux (H$_2$S) et le dioxyde de soufre (SO$_2$) qui  produit du soufre et de l’eau et modélisée par l'équation : 
+2$\;$H$_2$S  + SO$_2$ $\longrightarrow$ 3$\;$S + 2$\;$H$_2$
+
+
+\medskip
+L'exercice peut être rédigé comme un programme. Vous pourrez le nommer \texttt{exercice1.py}. 
+
+\medskip
+
+Allez chercher \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice1-aide.py}{\underline{le code présent à ce lien}}. Copiez-coller le dans votre programme. Ce code est à compléter.
+
+\begin{enumerate}
+\item Créez 4 \textbf{variables} qui contiendront les valeurs des coefficients stoechiométriques des différentes espèces. On pourra nommer ces variables \texttt{coeff\_xxx}.
+
+\smallskip
+Pour des précisions sur la notion de variable, \textsc{tutoriel page 9}.
+
+
+
+
+\medskip
+
+ \item Créez 4 variables, \texttt{n0\_H2S}, \texttt{n0\_SO2}, \texttt{n0\_S}, \texttt{n0\_H2O} qui contiendront les quantités de matière initiales de chacune des quatre espèces.
+ 
+Le programme devra demander à l'utilisateur les valeurs de ces 4 quantités.
+
+\smallskip
+\textsc{aides : }
+\begin{itemize}
+ \item la fonction \texttt{input()} (\textsc{tutoriel page 11}) permet d'interagir avec l'utilisateur du programme.
+ \item Attention : la fonction \texttt{input()} renvoie une chaîne de caractères ; il faudra penser à la transformer en nombre "flottant".
+\end{itemize}
+
+
+\medskip
+
+ \item Écrire les formules permettant de calculer les avancements maximaux possibles pour les deux réactifs ; on les notera \texttt{xmax\_H2S} et \texttt{xmax\_SO2}. Vous utiliserez les variables définies précédemment.
+ 
+
+ 
+ \medskip
+ 
+ \item En utilisant une condition (\textsc{tutoriel page 14}) ou par une autre méthode (voir ci-dessous), trouvez l'expression de l'avancement maximal \texttt{xmax} de cette réaction en fonction des résultats de la question précédente. 
+ 
+ Faites afficher sur la console la valeur de cet avancement maximal.
+ 
+ \smallskip
+ \textsc{aides : }
+\begin{itemize} 
+\item Si vous ne souhaitez pas traiter la question par la condition, Python dispose des fonctions \texttt{min()} et \texttt{max()} qui retournent le minimum et le maximum d'une liste passée en paramètre.
+
+
+\item Pour afficher quelque chose en console, on utilise la fonction \texttt{print()} (\textsc{tutoriel page 11}).
+ 
+ \end{itemize}
+ 
+ 
+ 
+\medskip
+ 
+ 
+ \item Calculez ensuite les valeurs finales de quantité de matière dans les 4 espèces, que vous appellerez \texttt{nF\_H2S}, \texttt{nF\_SO2}, \texttt{nF\_S} et \texttt{nF\_H2O} à partir des variables définies précédemment. 
+ 
+ \smallskip
+ 
+ Votre programme devra ensuite afficher sur la console les valeurs finales des quantités de matière des 4 espèces.
+ 
+ \end{enumerate}
+ 
+ 
+ 
+ \begin{comment}
+ 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> EN COMPLÉMENT
+ 
+ \item \textcolor{red}{\textbf{(optionnel)}} : Tracez ensuite un graphe représentant l'évolution des quantités de matière des 4 espèces en fonction de l'avancement $x$ de la réaction. On limitera les axes aux valeurs minimales et maximales possibles. Légendez ce graphe, donnez-lui un titre, nommez les axes.
+\end{enumerate}
+
+\end{comment}
+
+
+\begin{center}
+ $\looparrowright$ \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice1-aide.py}{\underline{\texttt{aide à la résolution : exercice1-aide.py}}}
+\end{center}
+
+\bigskip
+
+\bigskip
+
+
+\begin{center}
+$\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/corrections-formation/blob/master/exercice1-correction.py}{\underline{\texttt{lien vers la correction de cet exercice : exercice1-correction.py}}}$\blacktriangleleft$                                                                                                                                                                    \end{center}
+
+
+
+
+
+
+
+\newpage
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Représenter des points expérimentaux sur un graphe, exercice 2}
+
+
+\fbox{\begin{minipage}[c]{0.8\textwidth}
+
+\textit{Au programme de Seconde : représenter les positions
+successives d’un système modélisé par un point lors
+d’une évolution unidimensionnelle ou bidimensionnelle à
+l’aide d’un langage de programmation.}
+\end{minipage}}
+
+
+
+\bigskip
+
+
+On souhaite représenter la trajectoire d'un point au cours de son mouvement. L'étude a été faite par Avimeca, le fichier de sortie travaillé pour arriver aux 3 listes \texttt{X}, \texttt{Y} et \texttt{T} \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice2-aide.py}{\underline{présentes dans le fichier ici}}.
+
+
+
+\begin{enumerate}
+\item Copiez-coller l'intégralité de ce code dans votre programme que vous pourrez appeler \texttt{exercice2.py}.
+
+ \item Faites afficher les coordonnées spatiales et temporelles du 5\textsuperscript{ème} point de la trajectoire.
+ 
+ \smallskip
+ \textsc{aides : }
+\begin{itemize} 
+\item Python numérote à partir de "0" (\textsc{tutoriel page 13}).
+\item \texttt{L[2]} représente donc le 3\textsuperscript{ème} élément de la liste L (\textsc{tutoriel page 13}).
+ \end{itemize}
+ 
+ 
+ 
+ 
+ 
+ \medskip
+ 
+
+\begin{center}
+
+Vous pourrez utiliser le \textsc{vademecum} sur le tracé de graphes (sections 1 et 2) pour la suite.
+\end{center} 
+ 
+ 
+ \smallskip
+ 
+ 
+ \item Construisez la trajectoire à l'aide de la fonction \texttt{plt.plot()} ; vous incorporez un "label" à cet objet afin de faire afficher une légende.
+ 
+ 
+ \medskip
+ 
+ \item Donnez un nom aux axes et un titre au graphe ("Lancer d'une balle de golf").
+ 
+ \medskip
+ 
+ \item Limitez les axes d'abscisses et d'ordonnées par les valeurs minimales et maximales des deux listes.
+ 
+ \medskip
+ \item Construisez la légende puis faites afficher le tout.
+ 
+
+\end{enumerate}
+
+ 
+ 
+ 
+
+
+
+
+
+
+\begin{center}
+ $\looparrowright$ \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice2-aide.py}{\underline{\texttt{aide à la résolution : exercice2-aide.py}}}
+\end{center}
+
+\bigskip
+
+\bigskip
+
+
+\begin{center}
+$\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/corrections-formation/blob/master/exercice2-correction.py}{\underline{\texttt{lien vers la correction de cet exercice : exercice2-correction.py}}}$\blacktriangleleft$                                                                                                                                                                    \end{center}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Représenter une fonction sur un graphe, exercice 3}
+
+\subsection{Un problème}
+
+\begin{enumerate}
+ \item Placez-vous dans la \textbf{console} Python. Créez une liste \texttt{L}, \texttt{L = [1, 2, 3]} (pour les listes, voir \textsc{tutoriel pages 12-13}).
+ 
+ 
+ \item On souhaite multiplier tous les éléments de la liste par 3,5. On aimerait pouvoir écrire \texttt{3.5*L} et avoir le résultat. Testez cette formule. Quel est le retour ?
+ 
+ \item Python n'accepte pas le calcul d'une fonction sur une liste (ici $f(x) = 3,5\times x$); c'est dommage mais c'est normal, les listes peuvent contenir tout type de données, des nombres comme des chaînes de caractères.
+ 
+ \smallskip
+ Pour pouvoir réaliser l'opération souhaitée, c'est à dire faire agir une fonction sur tous les éléments d'une liste, on peut soit passer par une boucle et faire agir la fonction sur tous les éléments de la liste, soit transformer notre liste en un nouvel objet, un \textbf{tableau}. Celui-ci ne contient que des nombres, et du coup, les opérations naturelles sont autorisées (notamment celle qu'on souhaite réaliser).
+ 
+ \smallskip
+  Pour y parvenir, nous avons besoin de la bibliothèque \textbf{numpy} qui crée et gère les tableaux et les opérations sur ces derniers.
+
+   Puis nous tranformerons notre liste L en tableau : 
+   
+   
+   \begin{python}{0.8}
+
+   \chev L = [1, 2, 3]
+   
+    \chev \import numpy \as np \com{\# on importe la bibliothèque numpy sous l'alias np}
+    
+    \chev T = np.array(L) \com{\# on transforme la liste L en tableau par la fonction array de la bibli numpy}
+    
+    \chev \print(T)
+    
+    \chev 3.5*T
+    
+    
+    \chev \dir(np) \com{\# pour voir toutes les fonctions de la bibliothèque : il y a une fonction cos (cosinus)}
+    
+   \end{python}
+
+    On constate qu'à présent on peut faire le calcul de façon "naturelle".
+    
+    
+    \textbf{Conclusions : } 
+    
+    \begin{itemize}
+     \item La bibliothèque numpy nous permettra d'obtenir l'image d'un tableau de données par une fonction. Dès que vous voulez tracer une courbe théorique, utilisez cette bibliothèque. 
+     \item Autre point important : Numpy permettra de plus de réaliser des opérations "naturelles" entre les éléments de tableaux. 
+     
+     Soient 2 tableaux \texttt{U} et \texttt{I} de dimension 1 et de même longueur. Alors \texttt{U/I} réalisera le calcul membre à membre attendu et retournera un tableau contenant l'opération de division terme à terme.
+    \end{itemize}
+
+    
+    
+    
+
+ 
+ 
+\end{enumerate}
+
+
+
+\subsection{Ondes et signaux, exercice 3}
+
+
+
+\fbox{\begin{minipage}[c]{0.8\textwidth}
+
+\textit{Au programme de Première (Spécialité) : Représenter un signal
+périodique et illustrer l’influence de ses caractéristiques
+(période, amplitude) sur sa représentation.}
+\end{minipage}}
+
+
+
+\bigskip
+
+
+
+
+Vous pouvez créer un fichier \texttt{exercice3.py} ; Copiez-coller à l'intérieur \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice3-aide.py}{\underline{\texttt{le code présent à cette adresse}}}. 
+
+
+
+
+
+
+
+
+
+
+
+On souhaite représenter l'intensité d'un signal périodique qui s'écrit sous la forme : $I(x) = I_0\times \cos (k\cdot x + \phi )$
+
+
+\begin{itemize}
+ \item L'étude se fait dans la région de l'espace des $x$ : [0,5]
+ \item On prendra $I_0 = 3$
+ \item On prendra $k = \pi$
+ \item  On prendra $\phi = \dfrac{\pi}{2}$
+\end{itemize}
+
+
+\begin{enumerate}
+ \item À quoi servent chacune des trois premières lignes ? (aide : \textsc{tutoriel page 10})
+ 
+ \medskip
+ \item Entrez les données de l'énoncé, $I_0$, $k$ et $\phi$ dans des variables aux noms appropriés.
+ 
+ \medskip
+ \item Construisez votre tableau \texttt{X} de valeurs pour les antécédents (les $x$). 
+ 
+ \smallskip
+\textsc{aides : }
+\begin{itemize}
+ \item Numpy propose entre autres (une fois importé sous l'alias \texttt{np}) : 
+ \begin{itemize}
+  \item la fonction \texttt{np.arange()} qui est équivalente à la fonction range (\textsc{tutoriel page 12}) mais qui permet de prendre un pas décimal : \texttt{np.arange(1,10,0.01)} donne la série de valeurs entre 1 (inclus) et 10 (exclu) par pas de 0,01.
+  \item la fonction \texttt{np.linspace()} qui permet de donner un intervalle et le nombre de points à prendre dans l'intervalle : \texttt{np.linspace(1,10,2000)} renvoie un tableau de 2000 valeurs (régulièrement réparties) entre 1 (inclus) et 10 (inclus).
+\end{itemize}
+\end{itemize}
+ 
+ \medskip
+ 
+ \item Construire alors le tableau \texttt{I} constitué de toutes les images  $I(x) = I_0\times \cos (k\cdot x + \phi )$.
+ 
+ 
+ \smallskip
+\textsc{aides : }
+\begin{itemize}
+ \item Numpy connaît beaucoup de fonctions mathématiques ; ainsi, \texttt{np.cos(X)} renvoie les images d'un tableau X par la fonction cosinus.
+  \item Rappel du \textsc{tutoriel page 10} : pour voir l'ensemble des fonctions d'une bibliothèque (par exemple numpy), pensez à la fonction \texttt{dir()} (voir plus haut). 
+\end{itemize}
+ 
+ 
+ 
+ \medskip
+ 
+\smallskip
+\textsc{aide : }
+\begin{itemize}
+ \item vous pourrez utiliser le \textsc{vademecum} sur le tracé de graphes (sections 1 et 2) pour la suite.
+ \end{itemize}
+ 
+ \smallskip
+ 
+ 
+ \item Vous disposez à présent de deux tableaux, vous pouvez obtenir une représentation graphique. Commencez par construire la courbe à l'aide de la fonction \texttt{plt.plot()} ; vous incorporez un "label" à cet objet afin de faire afficher une légende.
+ 
+ 
+ \medskip
+ 
+ \item Donnez un nom aux axes et un titre au graphe.
+ 
+ \medskip
+ 
+ \item Limitez les axes d'abscisses et d'ordonnées par les valeurs minimales et maximales des deux tableaux.
+ 
+ \medskip
+ \item Construisez la légende puis faites afficher le tout.
+ 
+
+\end{enumerate}
+
+
+
+
+\begin{center}
+ $\looparrowright$ \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice3-aide.py}{\underline{\texttt{aide à la résolution : exercice3-aide.py}}}
+\end{center}
+
+
+
+\begin{center}
+$\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/corrections-formation/blob/master/exercice3-correction.py}{\underline{\texttt{lien vers la correction de cet exercice : exercice3-correction.py}}}$\blacktriangleleft$                                                                                                                                                                    \end{center}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Autour de la vitesse, exercice 4}
+
+
+\fbox{\begin{minipage}[c]{0.8\textwidth}
+
+\textit{Au programme de Seconde : Représenter des vecteurs vitesse
+d’un système modélisé par un point lors d’un mouvement
+à l’aide d’un langage de programmation.}
+\end{minipage}}
+
+
+
+\bigskip
+
+
+
+Vous pouvez créer un fichier \texttt{exercice4.py} ; Copiez-coller à l'intérieur \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice4-aide.py}{\underline{\texttt{le code présent à cette adresse}}}. 
+
+
+
+\subsection{Un aperçu de la trajectoire}
+
+\begin{enumerate}
+ \item En vous servant de ce qui a déjà été fait, représentez la trajectoire du point au cours de son mouvement.
+
+\end{enumerate}
+
+
+
+
+\subsection{Étude pour un point particulier}
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+ \item En utilisant les éléments des listes X, Y et T, le tuto page 12 et suivantes, calculer les coordonnées du vecteur vitesse du 3\textsuperscript{ème} point de la trajectoire (\texttt{vx} et \texttt{vy}), puis affichez-les.
+ 
+ \textsc{rappel :} 
+ 
+ \begin{itemize}
+  \item Python numérote les listes à partir du numéro "0" ;
+  \item Afin de se mettre en concordance avec la définition de dérivée en maths, on privilégiera en PC comme formule de calcul de vitesse : 
+  
+  \begin{center}
+$\vv{v}(n) = \dfrac{\vv{r}(n+1)-\vv{r}(n)}{t(n+1)-t(n)}$                                             \end{center}
+
+ \end{itemize}
+
+
+\item Déduisez-en alors la norme du vecteur vitesse pour le troisième point de la trajectoire (\texttt{v}). Calculez-la puis faites afficher cette norme.
+ 
+ 
+ 
+ \textsc{aides :}
+ \begin{itemize}
+ \item Mettre une expression $x$ au carré sous Python s'écrit : \texttt{x**2}.
+  \item On peut utiliser la fonction racine carrée de la biblitohèque \texttt{math} : \texttt{sqrt()}
+  \item On peut aussi mettre l'expression à la puissance un demi : \texttt{(xxxx)**(1/2)}
+ \end{itemize}
+ 
+
+ 
+ \item On souhaite maintenant tracer le vecteur vitesse en ce point. Il existe pour cela en Python la fonction \texttt{arrow()} et la fonction \texttt{quiver()} du paquet \texttt{matplotlib.pyplot}. 
+ 
+ Nous nous intéressons uniquement ici à la fonction \texttt{arrow}.
+ 
+ 
+ \medskip
+ 
+ \fbox{\begin{minipage}{0.8\textwidth}
+
+ \textsc{point cours : }
+ 
+ \smallskip
+ Une fois importé le paquet \texttt{matplotlib.pyplot} sous l'alias \texttt{plt}, la fonction arrow est appelée par : 
+ 
+ \smallskip
+ \texttt{plt.arrow(x,y, dx, dy, length\_includes\_head = \str{"true"}, head\_width = 0.02, color = \str{"..."})}
+ 
+ \medskip
+ avec : 
+ 
+ \begin{itemize}
+  \item x : la coordonnée selon $Ox$ du point de base du vecteur
+  \item y : la coordonnée selon $Oy$ du point de base du vecteur
+  \item dx : la longueur selon $Ox$ du vecteur
+ \item dy : la longueur selon $Oy$ du vecteur
+  \item color (optionnel) : à choisir parmi red, blue, green, cyan, black, yellow, \ldots
+  \item le paramètre length\_includes\_head = \str{"true"} (optionnel) permet d'avoir la longueur de la pointe de la flèche dans la longueur totale de la flèche
+  \item le paramètre head\_width (optionnel) permet de jouer sur l'épaisseur de la pointe de la flèche
+ \end{itemize}
+
+ \medskip
+ À l'usage, les vecteurs sont souvent trop grands ou trop petits ; il faudra donc appliquer un facteur multiplicatif aux longueurs dx et dy selon $Ox$ et $Oy$.
+ \end{minipage}}
+ 
+ 
+ \medskip
+ En vous servant de cela, tracez le vecteur vitesse au troisième point de la trajectoire. 
+ 
+ \end{enumerate}
+ 
+ 
+ \subsection{Étude pour tous les points}
+ 
+ \begin{enumerate}
+ 
+ \setcounter{enumi}{4}
+ \item En utilisant une \underline{boucle} (\textsc{tutoriel}, page 17 et suivantes), tracez tous les vecteurs possibles pour les points où cela est possible.
+ 
+ 
+ \smallskip
+ \textsc{aides : }
+ \begin{itemize}
+ \item On pourra penser à l'utilisation d'une boucle \texttt{for} associée à la fonction \texttt{range} : 
+ 
+ \texttt{for i in range(0,10) : } i va parcourir toutes les valeurs de 0 à 9 (\textsc{tutoriel} page 12)
+  \item le nombre d'éléments d'une liste \texttt{L} peut être donné par \texttt{len(L)} (\textsc{tutoriel} page 13)
+ \end{itemize}
+
+ 
+ \item Comment comprenez-vous la ligne du programme : 
+ 
+ \texttt{plt.text(0,0, \str{"vecteurs vitesse"}, color = \str{"magenta"})}
+ 
+ 
+ À quoi sert-elle ? Comment le vérifieriez-vous ? Vous pouvez rédiger ces réponses en commentaires, directement dans le code.
+ 
+ 
+ 
+ \item Rajoutez un nom aux axes et un titre au graphique.
+
+ 
+ \end{enumerate}
+
+
+
+ 
+ 
+
+
+\begin{center}
+ $\looparrowright$ \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice4-aide.py}{\underline{\texttt{aide à la résolution : exercice4-aide.py}}}
+\end{center}
+
+
+
+\begin{center}
+$\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/corrections-formation/blob/master/exercice4-correction.py}{\underline{\texttt{lien vers la correction de cet exercice : exercice4-correction.py}}}$\blacktriangleleft$                                                                                                                                                                    \end{center}
+
+
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+ 
+ 
+ 
+ \section{Modélisation à partir de points expérimentaux, exercice 5}
+
+\fbox{\begin{minipage}[c]{0.8\textwidth}
+
+\textit{Au programme de Seconde : Représenter un nuage de
+points associé à la caractéristique d’un dipôle et
+modéliser la caractéristique de ce dipôle à l’aide d’un
+langage de programmation.}
+ \end{minipage}}
+ 
+ \medskip
+ On parle de modélisation dans la partie Ondes et Signaux du programme de Seconde. Nous allons le traiter en mécanique, ce qui permettra de voir un cas plus général de l'utilisation d'une fonction particulière.
+ 
+ \medskip 
+La trajectoire précédente de l'exercice 4 semble être modélisable par une parabole (de type $a\cdot x^2+b\cdot x+c$). 
+
+
+\medskip
+
+
+\fbox{\begin{minipage}[c]{0.95\textwidth}
+\textsc{point cours : }
+
+La bibliothèque \texttt{numpy} sait "fitter" une courbe par un polynôme de degré $n$ grâce à la fonction \texttt{polyfit}.
+
+Considérons 2 listes X (abscisses) et Y (ordonnées) dont on souhaite approcher la représentation graphique par un polynôme de degré 3 ($a\cdot x^3+b\cdot x^2+ c\cdot x+d$), la fonction \texttt{polyfit} nous renverra une liste des coefficients $[a, b, c, d]$.
+
+\medskip
+La commande est la suivante : 
+
+\texttt{\import numpy \as np}
+
+\texttt{liste\_des\_coeffs = np.polyfit(X,Y,3)}
+
+
+\medskip
+On peut alors accéder au coefficient $a$ en écrivant \texttt{liste\_des\_coeffs[0]} pour l'afficher ou s'en servir pour tracer la courbe "fittée".
+
+\end{minipage}}
+
+
+\medskip
+
+\textsc{remarque : }
+
+Pour réaliser un régression linéaire, il suffira de choisir un polynôme de degré 1.
+
+
+
+\medskip
+
+
+Vous pouvez créer un fichier \texttt{exercice5.py} ; Copiez-coller à l'intérieur \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice5-aide.py}{\underline{\texttt{le code présent à cette adresse}}}. 
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\item Commencez par représenter la trajectoire du point considéré en pointillés bleus. Légendez cette trace.
+\item En utilisant la fonction polyfit, trouvez et faites afficher les coefficients polynômiaux qui permettent le mieux d'approximer notre courbe.
+\item Pour tracer notre courbe modèle, il serait intéressant de pouvoir écrire : 
+
+\begin{center}
+\texttt{Y\_modele = a*X**2 + b*X + c}                                     \end{center}
+Mais pour réaliser ce calcul "naturel", X doit être un tableau et pas une liste. 
+
+\begin{itemize}
+ \item Commencez par transformer votre liste X en tableau que vous pourrez nommer X à nouveau. (Vous avez déjà réalisé cela en bas de page 4 du présent poly)
+ \item Construisez alors votre tableau modèle \texttt{Y\_modele}.
+ \item Tracez alors la courbe représentative de votre modèle sur le même graphe en trait plein rouge. Légendez la. Conclusion.
+\end{itemize}
+ \item Rajoutez des noms aux axes et un titre au graphique.
+
+
+
+\end{enumerate}
+ 
+ 
+ 
+ 
+ 
+
+
+\begin{center}
+ $\looparrowright$ \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice5-aide.py}{\underline{\texttt{aide à la résolution : exercice5-aide.py}}}
+\end{center}
+
+
+
+\begin{center}
+$\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/corrections-formation/blob/master/exercice5-correction.py}{\underline{\texttt{lien vers la correction de cet exercice : exercice5-correction.py}}}$\blacktriangleleft$                                                                                                                                                                    \end{center}
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+\end{document}
