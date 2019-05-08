@@ -7,7 +7,7 @@
 
 \usepackage{hyperref}
 \usepackage{comment}
-
+\usepackage{pifont}
 \RequirePackage[left=1cm,right=1cm,top=1cm,bottom=1cm,noheadfoot]{geometry}
 \RequirePackage{fancyhdr}\pagestyle{fancy}
 \lhead{Formation Python}\rhead{Année Scolaire 2018-2019}\lfoot{}\rfoot{\LaTeXe{}}
@@ -25,7 +25,7 @@
 %\usepackage{lettrine}\usepackage{eurosym}\usepackage{amsmath,amssymb,mathrsfs}\usepackage{esvect}\usepackage{esdiff}\usepackage{cancel}\usepackage{fancybox}\usepackage{shadow}\usepackage{pifont}\usepackage{fourier-orns}\usepackage{frcursive}\usepackage{bm}\usepackage{alterqcm}\usepackage{pstricks,pst-3d}(pour les ombres)\usepackage{enumitem}
 %\renewcommand\thesection{\Roman{section}}
 \usepackage{hyperref}\usepackage{esvect}\usepackage{bm}
-\title{Formation Juin 2019 :\\Python pour l'enseignant de Physique-Chimie au lycée}\author{}\date{}
+\title{Formation Juin 2019 :\\$\star \star \star$\\ Python pour l'enseignant de Physique-Chimie au lycée}\author{}\date{}
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
@@ -116,55 +116,173 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\vspace{-2cm}
 
 \tableofcontents
 
-\medskip
+
+
+
+\newpage
+
+
+
+
+
+
 
 \begin{itemize}
+ \item \textit{L'ensemble du contenu de la formation (Python + microcontrôleurs) est présent sur un "padlet" à cette adresse : }
+ 
+ \smallskip
+ 
+ \begin{center}
+  \underline{\url{https://padlet.com/laurent\_astier/formation\_Juin\_2019}}
+ \end{center}
+ 
+ 
+ 
+ 
 
-\item \textit{Le lien vers cet énoncé en ligne est ici ; téléchargez-le (lien \texttt{Download} en haut du document) et utilisez-le pour accéder aux liens cliquables de l'énoncé : }
+ 
+ \bigskip
+ 
+ 
+ 
+ 
+ 
+ 
 
-\begin{center}
-%\underline{\url{https://github.com/formationPythonPC/Enonce-Formation/blob/master/formation.pdf}                                                                                                  }
-œ\end{center}
+\item \textit{Le lien vers cet énoncé en ligne est aussi sur ce "padlet" (nom : Poly formation) ; téléchargez-le et utilisez-le pour accéder aux liens cliquables de l'énoncé.}
 
 \medskip
+
+Vous pouvez aussi télécharger cet énoncé ici : 
+
+\smallskip
+
+\begin{center}
+\underline{\url{https://github.com/formationPythonPC-Juin/enonce-donnees/blob/master/formation-juin.pdf}                                                                                                  }
+\end{center}
+
+
+
+
+
+
+\bigskip
+
+
+
+
+
+
+
 
 \item Tous \underline{les liens soulignés} du présent énoncé sont cliquables et permettent d'accéder aux tutoriels, à des fichiers aides ou aux fichiers corrections.
 
+
+
+
+
+
+\bigskip
+
+
+
+
+
+
 \item \textit{Vous aurez auprès de vous les documents mis à disposition sur le site académique et en premier lieu : }
+
+\medskip
+
+
 \begin{itemize}
- \item \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-trace_de_graphe.pdf}{\underline{\texttt{Tracés de graphes avec Python}}} signalé dans ce poly par: \textsc{vademecum}
- \item \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-tutoriel.pdf}{\underline{\texttt{Tutoriel pour Python}}} signalé dans ce poly par: \textsc{tutoriel}
+ \item \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-trace_de_graphe.pdf}{\underline{\texttt{Tracés de graphes avec Python}}} signalé dans ce poly par: \textsc{vademecum} (aussi présent sur le "padlet" : Tracer des graphes)
+
+ \medskip
+ 
+ \item \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-tutoriel.pdf}{\underline{\texttt{Tutoriel pour Python}}} signalé dans ce poly par: \textsc{tutoriel} (aussi présent sur le "padlet" : Tutoriel de base)
 \end{itemize}
 
-\medskip
+
+
+
+
+
+
+\bigskip
+
+
+
 \item \textit{Vous traitez les exercices dans l'ordre (difficulté croissante).}
 
-\medskip
+
+
+
+\bigskip
+
+
+
+
+
+
 \item \textit{Pour chaque grande partie, vous créerez un fichier (stipulé dans l'énoncé).}
 
-\medskip
+
+
+
+
+
+
+\bigskip
+
+
+
+
+
+
 \item \textit{Chaque partie peut se traiter selon 3 niveaux de difficulté :} 
+
+\medskip
 
 \begin{itemize}
  \item \textbf{niveau 1} : on suit les questions dans l'ordre, en s'aidant ponctuellement des tutoriels et sans copier les codes proposés.
+
+ \medskip
  \item \textbf{niveau 2} : dès le début de chaque exercice, des aides à la résolution sous forme de morceaux de code sont données ; on copie-colle ces codes dans les programmes et on les complète pour répondre aux questions posées
+ 
+ \medskip
  \item \textbf{niveau 3} : on utilise les corrections données en fin de chaque partie. Le travail alors et de \textbf{commenter} les différentes lignes du programme, c'est à dire d'expliquer à quoi sert chaque ligne.
  
+ \medskip
  \textsc{rappels : }
  \begin{itemize}
   \item les commentaires sont des éléments du programme qui ne sont pas lus par Python, mais qui sont présents pour aider l'utilisateur du programme
+  
+  \medskip
   \item les commentaires sur une ligne sont introduits par \# (apparaissent en rouge sous IDLE)
+  
+  \medskip
   \item les commentaires sur plusieurs lignes sont introduits et terminés par un triple guillemet : \textbf{"""} (apparaissent en vert sous IDLE)
  \end{itemize}
  
 \end{itemize}
 
 
-\medskip
+
+
+
+
+
+
+\bigskip
+
+
+
+
+
+
 \item À chacun de choisir son niveau de difficulté ; conseil : 
 
 \begin{itemize}
@@ -176,7 +294,22 @@
 \end{itemize}
 
 
-\smallskip
+
+
+
+
+
+
+\bigskip
+
+
+
+
+
+
+
+
+
 \item \textit{Enfin, et même si cela n'est pas précisé, pensez à compiler votre code régulièrement pour vérifier si vous répondez bien aux questions.}
 
 \end{itemize}
@@ -334,7 +467,7 @@ l’aide d’un langage de programmation.}
 
 
 
-\bigskip
+\medskip
 
 
 On souhaite représenter la trajectoire d'un point au cours de son mouvement. L'étude a été faite par Avimeca, le fichier de sortie travaillé pour arriver aux 3 listes \texttt{X}, \texttt{Y} et \texttt{T} \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice2-aide.py}{\underline{présentes dans le fichier ici}}.

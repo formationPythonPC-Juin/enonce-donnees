@@ -1,0 +1,735 @@
+\documentclass[11pt]{article}
+\usepackage{mon_paquet}
+
+\usepackage{marvosym}
+\usepackage{mon_paquet}
+\usepackage{amssymb}
+
+\usepackage{hyperref}
+\usepackage{comment}
+
+\RequirePackage[left=1cm,right=1cm,top=1cm,bottom=1cm,noheadfoot]{geometry}
+\RequirePackage{fancyhdr}\pagestyle{fancy}
+\lhead{Formation Python}\rhead{Année Scolaire 2018-2019}\lfoot{}\rfoot{\LaTeXe{}}
+\renewcommand\headrulewidth{0pt}%ligne en dessous de l'en tête
+
+
+%graphes, physique-chimie
+%\usepackage{pst-osci}\usepackage{pst-diffraction}\usepackage{pst-circ}\usepackage{pst-dosage}\usepackage{pst-labo}\usepackage{pst-optic}\usepackage{pst-spectra,pstricks-add}\usepackage[pictex]{m-ch-en}\usepackage{m-pictex,m-ch-en}
+%\usepackage{psfrag}\usepackage{color,colortbl}\usepackage[table]{xcolor}\usepackage{graphicx}\usepackage[usenames,dvipsnames]{pstricks}\usepackage{epsfig}\usepackage{pst-grad}\usepackage{pst-plot}
+
+%mise en page, multicolonnage, paysage, tableaux maths
+%\usepackage{array}\usepackage{multirow}\usepackage{lscape}\usepackage{multido}
+
+%paquets divers, maths, encadrement, symboles, cursif, qcm,lettrine,ombrage
+%\usepackage{lettrine}\usepackage{eurosym}\usepackage{amsmath,amssymb,mathrsfs}\usepackage{esvect}\usepackage{esdiff}\usepackage{cancel}\usepackage{fancybox}\usepackage{shadow}\usepackage{pifont}\usepackage{fourier-orns}\usepackage{frcursive}\usepackage{bm}\usepackage{alterqcm}\usepackage{pstricks,pst-3d}(pour les ombres)\usepackage{enumitem}
+%\renewcommand\thesection{\Roman{section}}
+\usepackage{hyperref}\usepackage{esvect}\usepackage{bm}
+\title{Formation Juin 2019 :\\$\star \star \star$\\Python pour l'enseignant de Physique-Chimie au lycée\\$\star \star \star$\\Bonus}\author{}\date{}
+\begin{document}
+\maketitle
+\thispagestyle{fancy}
+
+
+
+
+
+
+% Commandes de base
+\newcommand{\from}[0]{\textcolor{orange}{from }}
+\newcommand{\import}[0]{\textcolor{orange}{import }}
+\newcommand{\for}[0]{\textcolor{orange}{for }}
+\newcommand{\while}[0]{\textcolor{orange}{while }}
+\newcommand{\dans}[0]{\textcolor{orange}{in }}
+\newcommand{\si}[0]{\textcolor{orange}{if }}
+\newcommand{\sinon}[0]{\textcolor{orange}{else }}
+\newcommand{\True}[0]{\textcolor{orange}{True }}
+\newcommand{\False}[0]{\textcolor{orange}{False }}
+\renewcommand{\si}[0]{\textcolor{orange}{if }}
+\renewcommand{\sinon}[0]{\textcolor{orange}{else }}
+\newcommand{\et}[0]{\textcolor{orange}{and }}
+\newcommand{\ou}[0]{\textcolor{orange}{or }}
+\newcommand{\as}[0]{\textcolor{orange}{as }}
+\newcommand{\defi}[0]{\textcolor{orange}{def }}
+\newcommand{\return}[0]{\textcolor{orange}{return }}
+
+
+\newcommand{\range}[0]{\textcolor{violet}{range}}
+\newcommand{\chev}[0]{\textcolor{violet}{\scriptsize $\bm{>>>}$ }}
+\newcommand{\print}[0]{\textcolor{violet}{print}}
+\newcommand{\type}[0]{\textcolor{violet}{type}}
+\newcommand{\dir}[0]{\textcolor{violet}{dir}}
+\newcommand{\len}[0]{\textcolor{violet}{len}}
+\renewcommand{\input}[0]{\textcolor{violet}{input}}
+\newcommand{\float}[0]{\textcolor{violet}{float}}
+%\renewcommand{\int}[0]{\textcolor{violet}{int}}
+\newcommand{\abs}[0]{\textcolor{violet}{abs}}
+
+\newcommand{\tab}[0]{\qquad \quad\,\, }
+\newcommand{\tabis}[0]{\quad\, }
+
+
+\newcommand{\str}[1]{\textcolor{green}{#1}}
+
+\renewcommand{\com}[1]{\textcolor{red}{#1}}
+
+%Environnement Python : 
+ \newenvironment{python}[1]{\begin{center}\begin{normalsize}\begin{sffamily}
+ \begin{minipage}{#1\textwidth}%
+\hrulefill~\raisebox{-0.8ex}{{\Large \textcolor{red}{\Keyboard}} \quad\textcolor{red}{\textit{\textsf{code Python}}}\quad {\Large\textcolor{red}{\Keyboard}}}~\hrulefill\par}%
+{\par\hrulefill \end{minipage}
+\end{sffamily}\end{normalsize}\end{center}}
+
+
+
+
+%Environnement correction Python : 
+ \newenvironment{correc}[1]{\begin{center}\begin{normalsize}\begin{sffamily}
+ \begin{minipage}{#1\textwidth}%
+\hrulefill~\raisebox{-0.8ex}{{\Large \textcolor{red}{\Keyboard}} \quad\textcolor{red}{\textit{\textsf{\textsc{une correction possible}}}}\quad {\Large\textcolor{red}{\Keyboard}}}~\hrulefill\par}%
+{\par\hrulefill \end{minipage}
+\end{sffamily}\end{normalsize}\end{center}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% Autres : quasi pas utilisé depuis l'environnement Python
+\newcommand{\ora}[1]{\textcolor{orange}{\texttt{#1}}}
+\newcommand{\vio}[1]{\textcolor{violet}{\texttt{#1}}}
+\newcommand{\rou}[1]{\textcolor{red}{\texttt{#1}}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\tableofcontents
+
+\bigskip
+
+\begin{itemize}
+
+\item \textit{Le lien vers cet énoncé en ligne est sur le "padlet" (Bonus formation); téléchargez-le et utilisez-le pour accéder aux liens cliquables de l'énoncé.}
+
+
+\medskip
+
+\textit{Vous pouvez aussi télécharger l'énoncé à cette adresse : }
+
+
+\begin{center}
+\underline{\url{https://github.com/formationPythonPC/Enonce-Formation/blob/master/bonus.pdf}                                                                                               }
+\end{center}
+
+
+
+
+
+
+
+\bigskip
+
+
+
+
+
+
+
+
+
+
+\item \textit{Par rapport à l'énoncé précédent, celui-ci ne propose pas forcément  de fichiers d'aides.}
+
+\medskip
+
+\textit{Quoiqu'il en soit, les potentiels fichiers d'aides et les fichiers corrections sont donnés en lien à la fin de chaque partie.}
+
+\medskip
+\textit{Vous réalisez donc les exercices via le niveau 1 (pas d'aide), le niveau 2 (avec aides si le fichier est fourni) ou le niveau 3 (correction donnée, il vous faut alors commenter les lignes de code pour expliquer à quoi elles servent).} 
+
+
+
+
+
+
+
+
+\bigskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{itemize}
+
+
+\begin{comment}
+
+
+
+
+\item Tous \underline{les liens soulignés} du présent énoncé sont cliquables et permettent d'accéder aux tutoriels, à des fichiers aides ou aux fichiers corrections.
+
+\item \textit{Vous aurez auprès de vous les documents mis à disposition sur le site académique et en premier lieu : }
+\begin{itemize}
+ \item \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-trace_de_graphe.pdf}{\underline{\texttt{Tracés de graphes avec Python}}} signalé dans ce poly par: \textsc{vademecum}
+ \item \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-tutoriel.pdf}{\underline{\texttt{Tutoriel pour Python}}} signalé dans ce poly par: \textsc{tutoriel}
+\end{itemize}
+
+\medskip
+\item \textit{Vous traitez les exercices dans l'ordre (difficulté croissante).}
+
+\medskip
+\item \textit{Pour chaque grande partie, vous créerez un fichier (stipulé dans l'énoncé).}
+
+\medskip
+\item \textit{Chaque partie peut se traiter selon 3 niveaux de difficulté :} 
+
+\begin{itemize}
+ \item \textbf{niveau 1} : on suit les questions dans l'ordre, en s'aidant ponctuellement des tutoriels et sans copier les codes proposés.
+ \item \textbf{niveau 2} : dès le début de chaque exercice, des aides à la résolution sous forme de morceaux de code sont données ; on copie-colle ces codes dans les programmes et on les complète pour répondre aux questions posées
+ \item \textbf{niveau 3} : on utilise les corrections données en fin de chaque partie. Le travail alors et de \textbf{commenter} les différentes lignes du programme, c'est à dire d'expliquer à quoi sert chaque ligne.
+ 
+ \textsc{rappels : }
+ \begin{itemize}
+  \item les commentaires sont des éléments du programme qui ne sont pas lus par Python, mais qui sont présents pour aider l'utilisateur du programme
+  \item les commentaires sur une ligne sont introduits par \# (apparaissent en rouge sous IDLE)
+  \item les commentaires sur plusieurs lignes sont introduits et terminés par un triple guillemet : \textbf{"""} (apparaissent en vert sous IDLE)
+ \end{itemize}
+ 
+\end{itemize}
+
+
+\medskip
+\item À chacun de choisir son niveau de difficulté ; conseil : 
+
+\begin{itemize}
+ \item Par défaut, commencez par le niveau 2, c'est ainsi que l'énoncé est rédigé. 
+ 
+ Si vous vous sentez à l'aise, vous pouvez tenter de réaliser les exercices sans les aides (niveau 1).
+ 
+ Si vous avez des difficultés, passez au niveau 3.
+\end{itemize}
+
+
+\smallskip
+\item \textit{Enfin, et même si cela n'est pas précisé, pensez à compiler votre code régulièrement pour vérifier si vous répondez bien aux questions.}
+
+\end{itemize}
+
+
+
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+\newpage
+
+\setcounter{section}{5}
+
+
+\section{Exercice 6 : Importer des données expérimentales pour les traiter par Python}
+
+
+On a réalisé à l'aide d'un microcontrôleur le relevé de mesures correspondant à l'expérience suivante : 
+
+\begin{itemize}
+ \item un capteur de température permet d'acquérir la température d'un liquide qui refroidit : donnée \texttt{"température"}
+ \item en parallèle, on fait calculer au microcontrôleur la résistance équivalente à un dispositif contenant une thermistance plongé dans la solution : donnée \texttt{"Réquivalente"}
+\end{itemize}
+
+\medskip
+
+Le microcontrôleur permet d'afficher ces deux valeurs toutes les 10 secondes dans un fichier que vous avez à disposition : \href{https://github.com/formationPythonPC-Juin/enonce-donnees/blob/master/donnees}{\underline{\texttt{donnees}}}.
+
+\medskip
+
+On souhaite représenter le graphe \texttt{Réquivalente} en fonction de \texttt{température} dans l'espoir de pouvoir la modéliser par une droite. 
+
+
+\medskip
+
+
+\begin{enumerate}
+ \item Ouvrez le fichier  \href{https://github.com/formationPythonPC-Juin/enonce-donnees/blob/master/donnees}{\underline{\texttt{donnees} à cette adresse}} ; observez son contenu. Le grand nombre de lignes rend difficile le traitement par un tableur. Copiez-coller l'intégralité de ce fichier dans un fichier que vous pourrez appeler \texttt{donnees}.
+ \item Créez un fichier \texttt{exercice6.py}. Ce fichier sera placé dans le même répertoire que le fichier de données ci-dessus. 
+ 
+ \smallskip
+ Votre fichier \texttt{exercice6.py} doit permettre :
+ 
+ 
+ \begin{itemize}
+  \item de placer les données dans 2 listes (qu'on pourra appeler \texttt{T} et \texttt{R})
+  \item de représenter l'ensemble des points de coordonnées \texttt{température ; résistance}
+  \item de modéliser l'évolution de ces points expérimentaux par une droite
+ \end{itemize}
+
+\end{enumerate}
+
+
+
+\subsection{Récupérer les données dans des "listes"}
+
+
+On souhaite créer deux listes \texttt{R} et \texttt{T} à partir des valeurs contenues dans le fichier de données.
+
+\smallskip
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item En vous servant du \emph{vade-mecum} présent sur notre site disciplinaire \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-inportation\_de\_donnees.pdf}{\underline{à ce lien}} ou encore \href{https://padlet.com/laurent\_astier/formation\_Juin\_2019}{\underline{ici ("Importer des données")}}, construisez les deux "listes" \texttt{T} et \texttt{R} utiles.
+
+\smallskip
+\textsc{remarque : } Pour être précis, T et R ne sont pas des listes ni des tableaux mais un type particulier de données propre à la bibliothèque pandas. En tout cas, leurs constituants sont des nombres avec lesquels on peut faire toutes les opérations permises par Python.
+
+
+\end{enumerate}
+
+
+
+
+\subsection{Représentation graphique}
+\begin{enumerate}
+ \setcounter{enumi}{3}
+ \item Représentez alors l'ensemble des points de coordonnées  \texttt{température ; résistance} sur un graphe. Donnez un titre au graphe, légendez-le ; donnez un nom aux axes. Faites afficher le graphe. Conclusion.
+\end{enumerate}
+
+
+
+
+\subsection{Modélisation de l'évolution des points expérimentaux}
+
+\begin{enumerate}
+ \setcounter{enumi}{4}
+ \item Les points précédents semblent alignés. Trouvez et faites afficher les coefficients caractéristiques de la droite modèle. 
+ \item Construisez et affichez sur le graphe la droite modèle de ce comportement. Intégrez de même une légende pour cette droite.
+ \end{enumerate}
+
+
+
+
+
+
+
+
+\bigskip
+
+
+\begin{center}
+$\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/corrections-formation/blob/master/exercice6-correction.py}{\underline{\texttt{lien vers la correction de cet exercice : exercice6-correction.py}}}$\blacktriangleleft$                                                                                                                                                                    \end{center}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+
+\section{Exercices 7 et 8 : Mécanique -- Étude énergétique}
+
+
+
+
+\fbox{\begin{minipage}[c]{0.8\textwidth}
+
+\textit{Au programme de Première Spécialité : Utiliser un langage de
+programmation pour effectuer le bilan énergétique d’un
+système en mouvement.}
+\end{minipage}}
+
+
+
+\bigskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Sujet}
+
+On souhaite simuler la trajectoire d'un solide matériel considéré comme ponctuel avant de réaliser un bilan énergétique. 
+
+Celui-ci est lancé depuis le point (0,0) avec un angle $\alpha = 55\degres$ par rapport à l'horizontale avec une vitesse de norme $v_0 = 10\;\text{m/s}$ à l'instant $t = 0$.
+
+La masse de l'objet est $m = 0.40\;\text{kg}$, l'accélération de la pesanteur valant $g = 9,8\;\text{N/kg}$.
+
+Le modèle sur lequel on s'appuie intègre que les frottements de l'air sur l'objet peuvent être considérés comme une force $\vv{f} = -k\cdot \vv{v}$ et on prendra $k = 5,0\cdot 10^{-2}\;\text{SI}$.
+
+
+
+On pose de plus $\tau = \dfrac{m}{k}$
+
+Dans ces conditions, la vitesse est donnée par : $\vv{v} = \vv{v_0}\cdot \text{e}^{-\left(\dfrac{t}{\tau}\right)}+\tau\cdot \vv{g}\times \left(1 - \text{e}^{-\left(\dfrac{t}{\tau}\right)}\right)$ 
+
+et le point se situe à $\vv{r} = \vv{v_0}\cdot \tau\times\left( 1 -  \text{e}^{-\left(\dfrac{t}{\tau}\right)}\right)+\tau\cdot \vv{g}\cdot t + \tau^2\cdot \vv{g}\times \left( \text{e}^{-\left(\dfrac{t}{\tau}\right)} - 1\right)$ 
+
+soit en projection sur les axes : $\left\{ \begin{array}{ll}
+                                            v_x = v_0\cdot \cos \alpha \cdot \text{e}^{-\left(t/\tau\right)}\\
+                                            
+                                            v_y = v_0\cdot \sin \alpha \cdot \text{e}^{-\left(t/\tau\right)} - {\tau\cdot g}\times \left(1 - \text{e}^{-\left(t/\tau\right)}\right)
+                                            
+                                           \end{array}\right.$
+
+
+
+
+
+
+$\left\{ \begin{array}{ll}
+x_M =& {v_0}\cdot \cos \alpha\cdot \tau\times\left( 1 -  \text{e}^{-\left(t/\tau\right)}\right) \\                                                                                                                                                                                           
+
+
+y_M =& \left( {v_0}\cdot \sin \alpha \cdot \tau+ \tau^2\cdot {g}\right) \times\left( 1 -  \text{e}^{-\left(t/\tau\right)}\right)-\tau\cdot {g}\cdot t
+\end{array}\right.$
+
+
+
+
+
+\medskip
+
+
+
+
+Pour cet exercice, vous pouvez créer un fichier, \texttt{exercice7.py}.
+
+\medskip
+
+
+\subsection{Exercice 7 : Visualisation de la trajectoire}
+
+
+Ici, il va nous falloir construire les listes (ou tableaux) T, X et Y donnant les coordonnées temporelles et spatiales du point.
+
+\medskip
+On pourrait construire des listes, cela serait un peu long. On préfèrera utiliser la bibliothèque \texttt{numpy} qui permet de réaliser des calculs "naturels" sur des tableaux.
+
+\medskip
+
+
+
+ 
+\begin{enumerate}
+ \item Rentrez les données de l'exercice dans des variables aux noms appropriés (les puissances de 10 se notent \texttt{e} sous Python ; de plus, la fonction \texttt{radians()} de la bibliothèque \texttt{math} convertit un angle en degrés en radians).
+ 
+ \item L'étude se fera entre $t_0 = 0$ et $t_f = 1,7$. On choisira un pas de temps $dt = 0,1\;\text{s}$.
+ 
+
+
+ 
+ 
+ Entrez ces valeurs dans des variables aux noms appropriés. Construire alors un \textbf{tableau} contenant tous les instants de l'étude.
+ 
+ \textsc{aide : }
+ 
+ Numpy (sous l'alias np) propose de construire très simplement des tableaux de valeurs ; 2 fonctions sont utiles : \texttt{np.arange()} et \texttt{np.linspace()} ; leurs paramètres sont les suivants : 
+ 
+ \begin{itemize}
+  \item \texttt{np.arange(debut, fin, intervalle\_entre\_les\_points)}
+  \item \texttt{np.linspace(debut, fin, nombre\_de\_points)}
+ \end{itemize}
+ 
+ 
+ 
+ \item Construisez alors les tableaux X, Y, VX, VY tout au long du déplacement.
+ \item Tapez le code permettant de visualiser la trajectoire du mobile sous Matplotlib.
+
+ 
+ 
+
+ \end{enumerate}
+ 
+ 
+ 
+ 
+ 
+ 
+ \begin{center}
+ $\looparrowright$ \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice7-aide.py}{\underline{\texttt{aide à la résolution : exercice7-aide.py}}}
+\end{center}
+ 
+ 
+
+
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ \subsection{Exercice 8 : Étude énergétique}
+ 
+ \begin{enumerate}
+
+ 
+ \item \underline{Avec utilisation de Numpy} : Après avoir importé la bibliothèque Numpy, implémentez 3 listes (ou tableaux) \texttt{Ep}, \texttt{Ec} et \texttt{E} qui permettront de connaître les énergies potentielle, cinétique et mécanique du mobile au cours de son déplacement.
+
+ 
+ \item Tracez alors les courbes représentant ces 3 grandeurs au cours du temps. Faites de même afficher en console les valeurs des 3 types d'énergies pour chaque instant t de la liste T.
+ 
+ \item On constate que les valeurs d'énergies possèdent beaucoup trop de décimales par rapport aux nombres de chiffres significatifs de l'énoncé.
+ 
+ \smallskip
+ Par malheur, Python ne dispose pas de fonction toute prête pour gérer le nombre de chiffres significatifs ; il faut la fabriquer\ldots
+ 
+ \smallskip
+ Par contre, Python dispose d'une fonction qui arrondit un nombre à $n$ chiffres après la virgule, c'est la fonction \texttt{round(nbe\_à\_arrondir, n)}.
+ 
+ \smallskip
+ À titre d'exemple, construire la liste \texttt{Xarrondie} contenant les éléments de X arrondis à 1 chiffre après la virgule.
+ 
+ \smallskip
+ Faites afficher \texttt{X} et \texttt{Xarrondie}.
+ 
+\end{enumerate}
+
+
+
+\begin{center}
+ $\looparrowright$ \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice8-aide.py}{\underline{\texttt{aide à la résolution : exercice8-aide.py}}}
+\end{center}
+
+
+
+\bigskip
+\begin{center}
+$\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/corrections-formation/blob/master/exercices7-8-correction.py}{\underline{\texttt{lien vers la correction de cette partie (exercices 7 et 8) : exercices7-8-correction.py}}}$\blacktriangleleft$                                                                                                                                                                    \end{center}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+
+
+
+\section{Exercice 9 : Onde progressive, périodicité spatiale et temporelle}
+
+
+
+\fbox{\begin{minipage}[c]{0.8\textwidth}
+
+\textit{Au programme de Première (Spécialité) : Simuler à
+l’aide d’un langage de programmation, la propagation
+d’une onde périodique.}
+\end{minipage}}
+
+
+
+\bigskip
+
+
+\subsection{Sujet}
+
+
+On souhaite représenter la propagation d'un signal périodique qui s'écrit sous la forme : $I(x) = I_0\times \cos (\omega\cdot t - k\cdot x + \phi )$ et visualiser la progression sur [0 ; 5]
+
+
+
+\begin{itemize}
+ \item L'étude se fait dans la région de l'espace des $x$ : [0,5]
+ \item On prendra $I_0 = 3$
+ \item On prendra $k = \pi$
+ \item  On prendra $\phi = \dfrac{\pi}{2}$
+\item On prendra $\omega = \pi$
+ \end{itemize}
+
+
+
+
+\subsection{Point cours}
+
+\fbox{\begin{minipage}{0.9\textwidth}
+\textsc{point cours : }
+
+\medskip
+C'est sans doute la partie la plus difficile (en terme de code) de ce que nous devrons traiter (En 2\textsuperscript{nde} et 1\textsuperscript{ère}). Le principe est le suivant : 
+
+\begin{enumerate}
+ \item On construit une courbe vide en phase d'initialisation
+ \item On va remplir cette courbe par des listes x et I
+ \item La liste I va varier en fonction du temps, il faudra donc qu'elle soit actualisée (mise à jour) pour chaque instant avec la fonction \texttt{set\_data()}
+ \item En incluant cela dans une boucle, on peut gérer ainsi une série de graphes différents pour des instants différents
+ \item \texttt{matplotlib.pyplot} dispose de la fonction \texttt{pause()} qui permet dans une boucle, d'afficher plusieurs images séparées d'un certain laps de temps, passé en paramètre de \texttt{pause()}.
+\end{enumerate}
+
+\end{minipage}}
+
+
+\bigskip
+
+
+\textsc{remarque : }
+
+Matplotlib dispose d'une fonction prête à l'emploi pour réaliser des animations, c'est la fonction 
+
+\texttt{matplotlib.animation.FuncAnimation}.
+
+Elle ne me semble pas très intéressante pour nos élèves ; en effet, on perd le sens physique de la propagation en l'utilisant. Pour cette raison nous ne l'étudierons pas.
+
+Il faut noter tout de même que notre méthode ne permet pas de réaliser des animations en 3D, ce que permet de faire \texttt{FuncAnimation}.
+
+
+
+
+
+
+
+
+
+
+\subsection{Application}
+
+Allez chercher  \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice9-aide.py}{\underline{le code présent ici}}, copiez-le dans un nouveau fichier que vous pourrez appeler \texttt{exercice9.py}.
+
+\medskip
+Ce code est déjà fonctionnel, vous pouvez le tester.
+
+\medskip
+Votre travail : écrire les commentaires partout où ils manquent.
+
+
+
+
+\bigskip
+
+
+
+
+
+
+\begin{center}
+$\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/corrections-formation/blob/master/exercice9-correction.py}{\underline{\texttt{lien vers la correction de cet exercice : exercice9-correction.py}}}$\blacktriangleleft$                                                                                                                                                                    \end{center}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+
+
+
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
