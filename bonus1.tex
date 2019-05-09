@@ -25,7 +25,7 @@
 %\usepackage{lettrine}\usepackage{eurosym}\usepackage{amsmath,amssymb,mathrsfs}\usepackage{esvect}\usepackage{esdiff}\usepackage{cancel}\usepackage{fancybox}\usepackage{shadow}\usepackage{pifont}\usepackage{fourier-orns}\usepackage{frcursive}\usepackage{bm}\usepackage{alterqcm}\usepackage{pstricks,pst-3d}(pour les ombres)\usepackage{enumitem}
 %\renewcommand\thesection{\Roman{section}}
 \usepackage{hyperref}\usepackage{esvect}\usepackage{bm}
-\title{Formation Juin 2019 :\\$\star \star \star$\\Python pour l'enseignant de Physique-Chimie au lycée\\$\star \star \star$\\Bonus}\author{}\date{}
+\title{Formation Juin 2019 :\\$\star \star \star$\\Python pour l'enseignant de Physique-Chimie au lycée\\$\star \star \star$\\Bonus 1}\author{}\date{}
 \begin{document}
 \maketitle
 \thispagestyle{fancy}
@@ -133,7 +133,7 @@
 
 
 \begin{center}
-\underline{\url{https://github.com/formationPythonPC/Enonce-Formation/blob/master/bonus.pdf}                                                                                               }
+\underline{\url{https://github.com/formationPythonPC-Juin/enonce-donnees/blob/master/bonus1.pdf}                                                                                               }
 \end{center}
 
 
@@ -312,7 +312,7 @@ On souhaite créer deux listes \texttt{R} et \texttt{T} à partir des valeurs co
 \item En vous servant du \emph{vade-mecum} présent sur notre site disciplinaire \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-inportation\_de\_donnees.pdf}{\underline{à ce lien}} ou encore \href{https://padlet.com/laurent\_astier/formation\_Juin\_2019}{\underline{ici ("Importer des données")}}, construisez les deux "listes" \texttt{T} et \texttt{R} utiles.
 
 \smallskip
-\textsc{remarque : } Pour être précis, T et R ne sont pas des listes ni des tableaux mais un type particulier de données propre à la bibliothèque pandas. En tout cas, leurs constituants sont des nombres avec lesquels on peut faire toutes les opérations permises par Python.
+\textsc{remarque pour les utilisateurs de pandas : } Pour être précis, T et R ne sont pas des listes ni des tableaux mais un type particulier de données propre à la bibliothèque pandas. En tout cas, leurs constituants sont des nombres avec lesquels on peut faire toutes les opérations permises par Python.
 
 
 \end{enumerate}
@@ -497,6 +497,10 @@ On pourrait construire des listes, cela serait un peu long. On préfèrera utili
  
  
  \item Construisez alors les tableaux X, Y, VX, VY tout au long du déplacement.
+ 
+  \textsc{aide : } Numpy peut faire agir la fonction exponentielle sur tout un tableau grâce à la fonction \texttt{np.exp(...)}.
+ 
+ 
  \item Tapez le code permettant de visualiser la trajectoire du mobile sous Matplotlib.
 
  
@@ -550,6 +554,9 @@ On pourrait construire des listes, cela serait un peu long. On préfèrera utili
  
  \item \underline{Avec utilisation de Numpy} : Après avoir importé la bibliothèque Numpy, implémentez 3 listes (ou tableaux) \texttt{Ep}, \texttt{Ec} et \texttt{E} qui permettront de connaître les énergies potentielle, cinétique et mécanique du mobile au cours de son déplacement.
 
+ 
+ \textsc{rappel : } $a^2$ s'écrit \texttt{a**2} en Python.
+ 
  
  \item Tracez alors les courbes représentant ces 3 grandeurs au cours du temps. Faites de même afficher en console les valeurs des 3 types d'énergies pour chaque instant t de la liste T.
  
