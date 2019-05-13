@@ -25,6 +25,7 @@
 %\usepackage{lettrine}\usepackage{eurosym}\usepackage{amsmath,amssymb,mathrsfs}\usepackage{esvect}\usepackage{esdiff}\usepackage{cancel}\usepackage{fancybox}\usepackage{shadow}\usepackage{pifont}\usepackage{fourier-orns}\usepackage{frcursive}\usepackage{bm}\usepackage{alterqcm}\usepackage{pstricks,pst-3d}(pour les ombres)\usepackage{enumitem}
 %\renewcommand\thesection{\Roman{section}}
 \usepackage{hyperref}\usepackage{esvect}\usepackage{bm}
+\usepackage{graphicx}
 \title{Formation Juin 2019 :\\$\star \star \star$\\ Python pour l'enseignant de Physique-Chimie au lycée}\author{}\date{}
 \begin{document}
 \maketitle
@@ -347,7 +348,7 @@ chimique totale à l’aide d’un langage de programmation.}
 
 
 On considère la réaction totale entre l’hydrogène sulfureux (H$_2$S) et le dioxyde de soufre (SO$_2$) qui  produit du soufre et de l’eau et modélisée par l'équation : 
-2$\;$H$_2$S  + SO$_2$ $\longrightarrow$ 3$\;$S + 2$\;$H$_2$
+2$\;$H$_2$S  + SO$_2$ $\longrightarrow$ 3$\;$S + 2$\;$H$_2$O
 
 
 \medskip
@@ -862,6 +863,9 @@ $\vv{v}(n) = \dfrac{\vv{r}(n+1)-\vv{r}(n)}{t(n+1)-t(n)}$                        
  
  
  \smallskip
+ 
+ \begin{multicols}{2}
+ 
  \textsc{aides : }
  \begin{itemize}
  \item On pourra penser à l'utilisation d'une boucle \texttt{for} associée à la fonction \texttt{range} : 
@@ -871,12 +875,35 @@ $\vv{v}(n) = \dfrac{\vv{r}(n+1)-\vv{r}(n)}{t(n+1)-t(n)}$                        
  \end{itemize}
 
  
+ \href{http://www.pythontutor.com/visualize.html\#mode=display}{En utilisant ce site} puis \texttt{Visualize execution} et \texttt{forward...} : 
+ 
+ entrez le code ci-dessous pour comprendre les différents éléments à utiliser dans cette question : 
+ 
+ 
+ 
+ \begin{python}{0.45}
+  L = [12, 13, 14]
+  
+  \for i \dans \range(0, \len(L)) : 
+  
+  \tabis \print(\str{"élément "}, i, \str{"\ \ \ valeur "}, L[i])
+ \end{python}
+
+ 
+ 
+ \end{multicols}
+ 
+ 
+ 
+ 
+ 
+ 
  \item Comment comprenez-vous la ligne du programme : 
  
  \texttt{plt.text(0,0, \str{"vecteurs vitesse"}, color = \str{"magenta"})}
  
  
- À quoi sert-elle ? Comment le vérifieriez-vous ? Vous pouvez rédiger ces réponses en commentaires, directement dans le code.
+ À quoi sert-elle ? Comment le vérifier ? Vous pouvez rédiger ces réponses en commentaires, dans le code.
  
  
  
@@ -933,9 +960,7 @@ La trajectoire précédente de l'exercice 4 semble être modélisable par une pa
 
 La bibliothèque \texttt{numpy} sait "fitter" une courbe par un polynôme de degré $n$ grâce à la fonction \texttt{polyfit}.
 
-Considérons 2 listes X (abscisses) et Y (ordonnées) dont on souhaite approcher la représentation graphique par un polynôme de degré 3 ($a\cdot x^3+b\cdot x^2+ c\cdot x+d$), la fonction \texttt{polyfit} nous renverra une liste des coefficients $[a, b, c, d]$.
-
-\medskip
+Considérons 2 listes X (abscisses) et Y (ordonnées) dont on souhaite approcher la représentation graphique par un polynôme de degré 3 ($a\cdot x^3+b\cdot x^2+ c\cdot x+d$), la fonction \texttt{polyfit} nous renverra une liste des coefficients $[a, b, c, d]$. $\quad$
 La commande est la suivante : 
 
 \texttt{\import numpy \as np}
@@ -944,7 +969,7 @@ La commande est la suivante :
 
 
 \medskip
-On peut alors accéder au coefficient $a$ en écrivant \texttt{liste\_des\_coeffs[0]} pour l'afficher ou s'en servir pour tracer la courbe "fittée".
+On peut ensuite accéder au coefficient $a$ en écrivant \texttt{liste\_des\_coeffs[0]} pour l'afficher ou s'en servir pour tracer la courbe "fittée".
 
 \end{minipage}}
 

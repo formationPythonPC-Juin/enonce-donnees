@@ -124,7 +124,7 @@
 
 \begin{itemize}
 
-\item \textit{Le lien vers cet énoncé en ligne est sur le "padlet" (Bonus 1 formation); téléchargez-le et utilisez-le pour accéder aux liens cliquables de l'énoncé.}
+\item \textit{Le lien vers cet énoncé en ligne est \href{https://padlet.com/laurent_astier/oat6d9azo7rs}{ici} sur le "padlet" (Bonus 1 formation); téléchargez-le et utilisez-le pour accéder aux liens cliquables de l'énoncé.}
 
 
 \medskip
@@ -272,18 +272,21 @@ On a réalisé à l'aide d'un microcontrôleur le relevé de mesures corresponda
 
 \medskip
 
-Le microcontrôleur permet d'afficher ces deux valeurs toutes les 10 secondes dans un fichier que vous avez à disposition : \href{https://github.com/formationPythonPC-Juin/enonce-donnees/blob/master/donnees}{\underline{\texttt{donnees}}}.
+Le microcontrôleur permet d'afficher ces deux valeurs au cours du temps dans un fichier que vous avez à disposition : \href{https://github.com/formationPythonPC-Juin/enonce-donnees/blob/master/donnees}{\underline{\texttt{donnees}}}.
 
 \medskip
 
-On souhaite représenter le graphe \texttt{Réquivalente} en fonction de \texttt{température} dans l'espoir de pouvoir la modéliser par une droite. 
+On souhaite représenter le graphe \texttt{Réquivalente} en fonction de \texttt{température} dans l'espoir de pouvoir modéliser le comportement par une droite. 
 
 
 \medskip
 
 
 \begin{enumerate}
- \item Ouvrez le fichier  \href{https://github.com/formationPythonPC-Juin/enonce-donnees/blob/master/donnees}{\underline{\texttt{donnees} à cette adresse}} ; observez son contenu. Le grand nombre de lignes rend difficile le traitement par un tableur. Copiez-coller l'intégralité de ce fichier dans un fichier que vous pourrez appeler \texttt{donnees}.
+ \item Ouvrez le fichier  \href{https://github.com/formationPythonPC-Juin/enonce-donnees/blob/master/donnees}{\underline{\texttt{"donnees"} à cette adresse}} ; observez son contenu. 
+ 
+ \smallskip
+ Le grand nombre de lignes rend difficile le traitement par un tableur. Copiez-coller l'intégralité de ce fichier dans un fichier que vous pourrez appeler \texttt{donnees}.
  \item Créez un fichier \texttt{exercice6.py}. Ce fichier sera placé dans le même répertoire que le fichier de données ci-dessus. 
  
  \smallskip
@@ -303,13 +306,13 @@ On souhaite représenter le graphe \texttt{Réquivalente} en fonction de \texttt
 \subsection{Récupérer les données dans des "listes"}
 
 
-On souhaite créer deux listes \texttt{R} et \texttt{T} à partir des valeurs contenues dans le fichier de données.
+On souhaite créer deux listes (ou tableaux) \texttt{R} et \texttt{T} à partir des valeurs contenues dans le fichier de données.
 
 \smallskip
 
 \begin{enumerate}
 \setcounter{enumi}{2}
-\item En vous servant du \emph{vade-mecum} présent sur notre site disciplinaire \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-inportation\_de\_donnees.pdf}{\underline{à ce lien}} ou encore \href{https://padlet.com/laurent\_astier/formation\_Juin\_2019}{\underline{ici ("Importer des données")}}, construisez les deux "listes" \texttt{T} et \texttt{R} utiles.
+\item En vous servant du \emph{vade-mecum} présent sur notre site disciplinaire \href{http://pedagogie.ac-limoges.fr/physique-chimie/IMG/pdf/python-inportation\_de\_donnees.pdf}{\underline{à ce lien}} ou encore \href{https://padlet.com/laurent_astier/oat6d9azo7rs}{\underline{ici ("Importer des données")}}, construisez les deux "listes" \texttt{T} et \texttt{R} utiles.
 
 \smallskip
 \textsc{remarque pour les utilisateurs de pandas : } Pour être précis, T et R ne sont pas des listes ni des tableaux mais un type particulier de données propre à la bibliothèque pandas. En tout cas, leurs constituants sont des nombres avec lesquels on peut faire toutes les opérations permises par Python.
