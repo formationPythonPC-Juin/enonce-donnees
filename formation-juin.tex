@@ -254,7 +254,7 @@ Vous pouvez aussi télécharger cet énoncé ici :
  \item \textbf{niveau 2} : dès le début de chaque exercice, des aides à la résolution sous forme de morceaux de code sont données ; on copie-colle ces codes dans les programmes et on les complète pour répondre aux questions posées
  
  \medskip
- \item \textbf{niveau 3} : on utilise les corrections données en fin de chaque partie. Le travail alors et de \textbf{commenter} les différentes lignes du programme, c'est à dire d'expliquer à quoi sert chaque ligne.
+ \item \textbf{niveau 3} : on utilise les corrections données en fin de chaque partie. Le travail est alors et de \textbf{commenter} les différentes lignes du programme, c'est à dire d'expliquer à quoi sert chaque ligne.
  
  \medskip
  \textsc{rappels : }
@@ -471,9 +471,12 @@ l’aide d’un langage de programmation.}
 \medskip
 
 
-On souhaite représenter la trajectoire d'un point au cours de son mouvement. L'étude a été faite par Avimeca, le fichier de sortie travaillé pour arriver aux 3 listes \texttt{X}, \texttt{Y} et \texttt{T} \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice2-aide.py}{\underline{présentes dans le fichier ici}}.
+On souhaite représenter la trajectoire d'un point au cours de son mouvement. L'étude a été faite par Avimeca, le fichier de sortie est constitué de 3 listes :  \texttt{X}, \texttt{Y} et \texttt{T} \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice2-aide.py}{\underline{présentes dans le fichier ici}}.
 
+\smallskip
+On veut à partir de ces listes, réaliser l'affichage à l'écran de la trajectoire $y = f(x)$ en particulier.
 
+\medskip
 
 \begin{enumerate}
 \item Copiez-coller l'intégralité de ce code dans votre programme que vous pourrez appeler \texttt{exercice2.py}.
@@ -503,7 +506,7 @@ Vous pourrez utiliser le \textsc{vademecum} sur le tracé de graphes (sections 1
  \smallskip
  
  
- \item Construisez la trajectoire à l'aide de la fonction \texttt{plt.plot()} ; vous incorporez un "label" à cet objet afin de faire afficher une légende.
+ \item Construisez la trajectoire à l'aide de la fonction \texttt{plt.plot()} ; vous incorporez un "label" à cet objet afin de faire afficher une légende dans une question ultérieure.
  
  
  \medskip
@@ -515,7 +518,7 @@ Vous pourrez utiliser le \textsc{vademecum} sur le tracé de graphes (sections 1
  \item Limitez les axes d'abscisses et d'ordonnées par les valeurs minimales et maximales des deux listes.
  
  \medskip
- \item Construisez la légende puis faites afficher le tout.
+ \item "Construisez" la légende puis faites afficher le tout.
  
 
 \end{enumerate}
@@ -579,10 +582,18 @@ $\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/correction
  \item Python n'accepte pas le calcul d'une fonction sur une liste (ici $f(x) = 3,5\times x$); c'est dommage mais c'est normal, les listes peuvent contenir tout type de données, des nombres comme des chaînes de caractères.
  
  \smallskip
- Pour pouvoir réaliser l'opération souhaitée, c'est à dire faire agir une fonction sur tous les éléments d'une liste, on peut soit passer par une boucle et faire agir la fonction sur tous les éléments de la liste, soit transformer notre liste en un nouvel objet, un \textbf{tableau}. Celui-ci ne contient que des nombres, et du coup, les opérations naturelles sont autorisées (notamment celle qu'on souhaite réaliser).
+ Pour pouvoir réaliser l'opération souhaitée, c'est à dire faire agir une fonction sur tous les éléments d'une liste, on peut : 
+ 
+ \begin{itemize}
+ 
+\item  soit passer par une boucle et faire agir la fonction sur tous les éléments de la liste, 
+
+\item soit transformer notre liste en un nouvel objet, un \textbf{tableau}. Celui-ci ne contient que des nombres, et du coup, les opérations naturelles sont autorisées (notamment celle qu'on souhaite réaliser).
+ 
+ \end{itemize}
  
  \smallskip
-  Pour y parvenir, nous avons besoin de la bibliothèque \textbf{numpy} qui crée et gère les tableaux et les opérations sur ces derniers.
+  Pour parvenir à cette dernière possibilité, nous avons besoin de la bibliothèque \textbf{numpy} qui crée et gère les tableaux et les opérations sur ces derniers.
 
    Puis nous tranformerons notre liste L en tableau : 
    
@@ -600,7 +611,7 @@ $\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/correction
     \chev 3.5*T
     
     
-    \chev \dir(np) \com{\# pour voir toutes les fonctions de la bibliothèque : il y a une fonction cos (cosinus)}
+    \chev \dir(np) \com{\# pour voir toutes les fonctions de la bibliothèque : il y a une fonction cos (cosinus) dont vous aurez besoin tout à l'heure\ldots}
     
    \end{python}
 
@@ -864,7 +875,6 @@ $\vv{v}(n) = \dfrac{\vv{r}(n+1)-\vv{r}(n)}{t(n+1)-t(n)}$                        
  
  \smallskip
  
- \begin{multicols}{2}
  
  \textsc{aides : }
  \begin{itemize}
@@ -881,21 +891,21 @@ $\vv{v}(n) = \dfrac{\vv{r}(n+1)-\vv{r}(n)}{t(n+1)-t(n)}$                        
  
  
  
- \begin{python}{0.45}
+ \begin{center}
+\begin{python}{0.7}
   L = [12, 13, 14]
   
   \for i \dans \range(0, \len(L)) : 
   
   \tabis \print(\str{"élément "}, i, \str{"\ \ \ valeur "}, L[i])
- \end{python}
+ \end{python}             \end{center}
 
  
  
- \end{multicols}
  
  
  
- 
+ \smallskip
  
  
  \item Comment comprenez-vous la ligne du programme : 
@@ -914,7 +924,7 @@ $\vv{v}(n) = \dfrac{\vv{r}(n+1)-\vv{r}(n)}{t(n+1)-t(n)}$                        
 
 
 
- 
+ \medskip
  
 
 
@@ -922,6 +932,8 @@ $\vv{v}(n) = \dfrac{\vv{r}(n+1)-\vv{r}(n)}{t(n+1)-t(n)}$                        
  $\looparrowright$ \href{https://github.com/formationPythonPC-Juin/aides-formation/blob/master/exercice4-aide.py}{\underline{\texttt{aide à la résolution : exercice4-aide.py}}}
 \end{center}
 
+
+\medskip
 
 
 \begin{center}
@@ -932,7 +944,7 @@ $\blacktriangleright$ \href{https://github.com/formationPythonPC-Juin/correction
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
  
- 
+ \newpage
  
  
  \section{Modélisation à partir de points expérimentaux, exercice 5}
